@@ -1,9 +1,9 @@
 import React from 'react';
 import Answer from '../coponents/Answer';
 
-const Answers = (props) => {
+const Answers = ({ answers, checkAnswer, disableButtons, correctAnswer, finishQuiz, nextQuestion, number }) => {
 
-    const answers = props.answers;
+
 
     return (
         <div className="answers">
@@ -12,13 +12,13 @@ const Answers = (props) => {
                     key={index}
                     id={index}
                     text={answer}
-                    checkAnswer={props.checkAnswer}
-                    disableButtons={props.disableButtons}
-                    correctAnswer={props.correctAnswer}
+                    checkAnswer={checkAnswer}
+                    disableButtons={disableButtons}
+                    correctAnswer={correctAnswer}
                 />
             ))}
 
-            {props.number + 1 === 10 ? <button className="btn next-btn" onClick={props.finishQuiz}>Koniec Quizu</button> : <button className="btn next-btn" onClick={props.nextQuestion}>Następne pytanie</button>}
+            {number + 1 === 10 ? <button className="btn next-btn" onClick={finishQuiz}>Koniec Quizu</button> : <button className="btn next-btn" onClick={nextQuestion}>Następne pytanie</button>}
 
         </div>
     )
