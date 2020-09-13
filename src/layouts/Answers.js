@@ -3,10 +3,7 @@ import Answer from '../coponents/Answer';
 
 const Answers = (props) => {
 
-    // const answers = props.answers.sort(() => Math.random() - 0.5);
     const answers = props.answers;
-
-
 
     return (
         <div className="answers">

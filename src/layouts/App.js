@@ -8,12 +8,9 @@ import Result from './Result';
 import Footer from './Footer';
 import LoadingPage from './LoadingPage';
 
-// const API = 'https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple';
 const API = 'https://opentdb.com/api.php?amount=10&category=21&type=multiple';
 
 class App extends Component {
-
-
 
   state = {
     questionNumber: 0,
@@ -52,10 +49,8 @@ class App extends Component {
     }, 500)
   }
 
-
   componentDidMount() {
     this.fetchAPI();
-
   }
 
   componentDidUpdate(prevState) {
@@ -64,8 +59,6 @@ class App extends Component {
       this.fetchAPI();
     }
   }
-
-
 
   handleAnswerClick = (e) => {
     const index = this.state.questionNumber;
@@ -80,7 +73,6 @@ class App extends Component {
         disableButtons: true,
         givenAnswers: [...prevState.givenAnswers, "ok"],
         correctAnswer
-
       }))
     } else if (correctAnswer !== choosedAnswer) {
       this.setState(prevState => ({
@@ -89,7 +81,6 @@ class App extends Component {
         correctAnswer
       }))
     }
-
   }
 
   handleNextQuestion = () => {
@@ -122,28 +113,26 @@ class App extends Component {
       disableButtons: false,
       quizFinished: false
     })
-
   }
 
-
   render() {
-    const { questionNumber } = this.state;
+    const { score, questionNumber, quizFinished, isCorrect, givenAnswers, disableButtons } = this.state;
 
-    if (this.state.quizFinished) {
+    if (quizFinished) {
       return (
         <div className="app">
           <div className="quiz">
             <Header />
             <Result
               restart={this.handleRestart}
-              score={this.state.score}
+              score={score}
             />
             <Footer />
           </div>
         </div>
       )
     }
-    else if (this.state.questions.length > 0 && !this.state.quizFinished) {
+    else if (this.state.questions.length > 0 && !quizFinished) {
       const question = this.state.questions[questionNumber].question;
       const answers = this.state.questions[questionNumber].all_answers;
       const correctAnswer = this.state.questions[questionNumber].correct_answer;
@@ -153,10 +142,10 @@ class App extends Component {
           <div className="quiz">
             <Header />
             <Progress
-              score={this.state.score}
-              questionNumber={this.state.questionNumber}
-              correct={this.state.isCorrect}
-              givenAnswers={this.state.givenAnswers}
+              score={score}
+              questionNumber={questionNumber}
+              correct={isCorrect}
+              givenAnswers={givenAnswers}
             />
             <div className="container">
               <Question
@@ -167,8 +156,8 @@ class App extends Component {
                 checkAnswer={this.handleAnswerClick}
                 nextQuestion={this.handleNextQuestion}
                 finishQuiz={this.handleFinishQuiz}
-                disableButtons={this.state.disableButtons}
-                number={this.state.questionNumber}
+                disableButtons={disableButtons}
+                number={questionNumber}
                 correctAnswer={this.state.correctAnswer}
               />
             </div>
