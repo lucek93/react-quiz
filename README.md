@@ -1,4 +1,4 @@
-Quiz made by using React.js. Questions are fetched from database API.
+## Quiz made by using React.js. Questions are fetched from database API.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
