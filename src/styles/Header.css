@@ -1,0 +1,9 @@
+.header {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+    max-height: 20vh;
+    border-bottom: 4px solid #01330C;
+
+}

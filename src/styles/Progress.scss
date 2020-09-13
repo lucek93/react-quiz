@@ -1,0 +1,69 @@
+$darkGreen: #01330C;
+$lightGreen: #4FB94F;
+
+@keyframes glow {
+    0% {
+        text-shadow: 0px 0px 7px $lightGreen;
+    }
+
+    10% {
+        text-shadow: 0px 0px 15px $lightGreen;
+    }
+
+    100% {
+        text-shadow: 0px 0px 7px $lightGreen;
+    }
+}
+
+.progress {
+    display: flex;
+    margin: 0 auto;
+    height: 10vh;
+    width: 90vw;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        flex: 0.6;
+        font-size: 1.5rem;
+        color: #01330C;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: glow 2s ease-in-out infinite;
+    }
+
+    .given-answers {
+        flex: 1;
+
+        button {
+            font-size: 30px;
+            height: 50px;
+            width: 45px;
+            margin: 10px;
+            border: none;
+            background-color: transparent;
+
+        }
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    .progress {
+        flex-direction: column;
+        margin: 50px auto;
+        min-height: 10vh;
+        width: 95vw;
+
+        .given-answers {
+            flex: 1;
+
+            button {
+                font-size: 30px;
+                height: 35px;
+                width: 35px;
+            }
+        }
+
+    }
+}
